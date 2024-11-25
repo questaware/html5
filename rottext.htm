@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+</body>
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+var font, text, x, y;
+
+text = "Mississippi";
+
+//Set font size before measuring
+font = 20;
+ctx.font = font + 'px Arial, sans-serif';
+//Get width of text
+var metrics = ctx.measureText(text);
+//Set canvas dimensions
+canvas.width = font;//The height of the text. The text will be sideways.
+canvas.height = metrics.width;//The measured width of the text
+//After a canvas resize, the context is reset. Set the font size again
+ctx.font = font + 'px Arial';
+//Set the drawing coordinates
+x = font/2;
+y = metrics.width/2;
+//Style
+ctx.fillStyle = 'black';
+ctx.textAlign = 'center';
+ctx.textBaseline = "bottom";
+//Rotate the context and draw the text
+ctx.save();
+ctx.translate(x, y);
+ctx.rotate(-Math.PI / 4);
+ctx.fillText(text, 0, font / 2);
+ctx.restore();
+
+</script>
+
+</head>
+</html>
+

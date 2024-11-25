@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+<canvas id="demoCanvas" width="340" height="340"> canvas</canvas> 
+</body>
+<script type="text/javascript">
+
+const canvas = document.getElementById("demoCanvas");
+const ctx = canvas.getContext("2d");
+
+// Save the current state
+ctx.save();
+
+ctx.fillStyle = "green";
+ctx.fillRect(10, 10, 100, 100);
+
+// Restore to the state saved by the most recent call to save()
+ctx.restore();
+
+ctx.fillRect(150, 40, 100, 100);
+
+</script>
+</head>
+</html>
+

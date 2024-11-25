@@ -1,0 +1,80 @@
+<!-- -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>MouseListen</title></head>
+<body>
+<canvas id="demoCanvas" width="340" height="340"> canvas</canvas> 
+<script>
+var canvas = document.getElementById('demoCanvas');
+var ctx = canvas.getContext('2d');
+var x = 90;
+var y = 100;
+var radius = 75;
+var startAngle = 1.1 * Math.PI;
+var endAngle = 1.9 * Math.PI;
+var counterClockwise = false;
+ctx.beginPath();
+ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+ctx.lineWidth = 4;
+
+ctx.strokeStyle = 'green';
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(10, 100);
+ctx.quadraticCurveTo(250, 170, 230, 20);
+ctx.stroke();
+
+canvas.addEventListener('click', (e) => {
+  const pos = {
+    x: e.clientX,
+    y: e.clientY
+  };
+  alert('X: ' + mousePoint.x + ' Y: ' mousePoint.y);
+});
+</script>
+</body>
+</html>
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Click arcs example</title></head>
+<body>
+<canvas id="demoCanvas" width="340" height="340"> canvas</canvas> 
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// create circles to draw
+const circles = [
+  {
+    x: 40,
+    y: 40,
+    radius: 10,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 70,
+    y: 70,
+    radius: 10,
+    color: 'rgb(0,255,0)'
+  }
+];
+
+// draw circles
+circles.forEach(circle => {
+  ctx.beginPath();
+  ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
+  ctx.fillStyle = circle.color;
+  ctx.fill();
+});
+canvas.addEventListener('click', () => {
+   console.log('canvas click');
+	alert('Got');
+});
+</script>
+</body>
+</html>
+-->

@@ -1,0 +1,33 @@
+function copyFiles() {
+  var mainFolder = DriveApp.getFoldersByName("Shirts for other companies").next();
+  var folders = mainFolder.getFolders(); // Get folder iterator from main folder 
+  var databaseFolderName = "Database folder"; // You database folder name
+  var databaseFolder = mainFolder.getFoldersByName(databaseFolderName).next(); // Get databse folder
+  var idsArray = []; // Array to store the ids of the copied files
+  while (folders.hasNext()) { // Iterate through each folder in the main folder
+    var folder = folders.next();
+    if (folder.getName() !== databaseFolderName) { // Check current folder is not the database folder
+      var files = folder.getFiles();
+      while (files.hasNext()) { // Iterate through each file in each subfolder
+        var file = files.next();
+        if (file.getName().substring(0, 4).toLowerCase() === "mock") { // Check that file name starts with "mock"
+          // Get ids of the files that were copied in previous executions:
+          var key = "copied-ids";
+          var scriptProperties = PropertiesService.getScriptProperties();
+          var ids = scriptProperties.getProperty(key);
+          if (ids) idsArray = ids.split(",");
+          else ids = "";
+          // Get current file id:
+          var id = file.getId();
+          // Check that current file id is not in properties (not copied before):
+          if (idsArray.indexOf(id) === -1) {
+            file.makeCopy(databaseFolder); // Copy file to database folder
+            idsArray.push(id); // Add file id to the array of copied files
+          }
+          ids = idsArray.toString();
+          scriptProperties.setProperty(key, ids);
+        }
+      }
+    }
+  }
+}

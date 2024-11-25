@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Broken</title></head>
+<body>
+<canvas id="demoCanvas" width="340" height="340"> canvas</canvas> 
+<script>
+var canvas = document.getElementById('demoCanvas');
+var ctx = canvas.getContext('2d');
+var x = 90;
+var y = 100;
+var radius = 75;
+var startAngle = 1.1 * Math.PI;
+var endAngle = 1.9 * Math.PI;
+var counterClockwise = false;
+ctx.beginPath();
+ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+ctx.lineWidth = 4;
+
+ctx.strokeStyle = 'green';
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(10, 100);
+ctx.quadraticCurveTo(250, 170, 230, 20);
+ctx.stroke();
+<!--
+canvas.addEventListener('click', (e) => {
+  const pos = {
+    x: e.clientX,
+    y: e.clientY
+  };
+  alert('X: ' + mousePoint.x + ' Y: ' mousePoint.y);
+});
+//-->
+</script>
+<label for="cars">Choose a car:</label>
+
+<select name="cars" id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+
+<label for="cars">Choose a car:</label>
+<select name="cars" id="cars">
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+  <optgroup label="German Cars">
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </optgroup>
+</select>
+//</body> 
+//</html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+</head>
+<body style="background-color:white;">
+
+<h2>Clickable Dropdown</h2>
+<p>Click on the button to open the dropdown menu.</p>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+//</body>
+//</html>
+<!-- 
+//-->
+//<html>
+
+<head>
+    <title>
+        How to get selected value in
+        dropdown list using JavaScript?
+    </title>
+</head>
+
+<body>
+    <h1 style="color: green">
+        GeeksforGeeks
+    </h1>
+    <b>
+        How to get selected value in dropdown
+        list using JavaScript?
+    </b>
+    <p> Select one from the given options:
+        <select id="select1">
+            <option value="free">Free</option>
+            <option value="basic">Basic</option>
+            <option value="premium">Premium</option>
+        </select>
+    </p>
+
+
+    <p> The value of the option selected is:
+        <span class="output"></span>
+    </p>
+
+
+    <button onclick="getOption()"> Check option </button>
+
+    <script type="text/javascript">
+        function getOption() {
+            selectElement = 
+                  document.querySelector('#select1');
+            output = selectElement.value;
+            document.querySelector('.output').textContent = output;
+        }
+    </script>
+//</body>
+
+//</html>
+<!-- 
+//-->
+//<html>
+
+<head>
+    <title>
+        How to get selected value in
+        dropdown list using JavaScript?
+    </title>
+</head>
+
+<body>
+    <h1 style="color: green">
+        GeeksforGeeks
+    </h1>
+    <b>
+        How to get selected value in
+        dropdown list using JavaScript?
+    </b>
+    <p> Select one from the given options:
+        <select id="select2">
+            <option value="free">Free</option>
+            <option value="basic">Basic</option>
+            <option value="premium">Premium</option>
+        </select>
+    </p>
+    <p> The value of the option selected is:
+        <span class="valfield"></span>
+    </p>
+
+
+    <button onclick="getOption2()">Check option</button>
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity=
+"sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer">
+    </script>
+    <script type="text/javascript">
+
+        function getOption2() {
+            const out2 = $('#select2').val();
+            $('.valfield').text(out2);
+        }
+    </script>
+</body>
+</html>

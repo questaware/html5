@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+       <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, 
+                   initial-scale=1.0"
+        />
+        <style>
+            .popup {
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(
+                    0,
+                    0,
+                    0,
+                    0.4
+                );
+                display: none;
+            }
+            .popup-content {
+                background-color: white;
+                margin: 10% auto;
+                padding: 20px;
+                border: 1px solid #888888;
+                width: 30%;
+                font-weight: bolder;
+            }
+            .popup-content button {
+                display: block;
+                margin: 0 auto;
+            }
+            .show {
+                display: block;
+            }
+        </style>
+        <title>ArcPage0</title>
+<body>
+<button id ="showd1"> Show D1 </button>
+<dialog id = "dialog1"> title="Basic dialog">
+  <p>Tekst</p>
+  <form method="dialogg1">
+   <button>OK</button>
+  </form>
+</dialog>
+<dialog id = "dialog2"> title="Less Basic dialog">
+  <p>Tekst</p>
+  <form method="dialogg2">
+   <button>OK</button>
+  </form>
+</dialog>
+<button id ="showd2"> Show D2 </button>
+<dialog id = "dialog3"> title="Adv dialog">
+  <p>Tekst</p>
+  <form method="dialogg3">
+   <button>OK</button>
+  </form>
+</dialog>
+<button id ="showd3"> Show D3 </button>
+
+<button id="btn1" onclick="myFunction()" class="ui-state-default ui-corner-all">Click Here</button>
+
+<canvas id="demoCanvas" width="340" height="340"> canvas</canvas> 
+
+	    	<p> The value of the option selected is:
+  	      <span class="coords"></span>
+    		</p>
+
+        <h3>
+            Create popup box using HTML and CSS
+        </h3>
+        <button id="myButton">Click me</button>
+        <div id="myPopup" class="popup">
+            <div class="popup-content">
+                <h1 style="color: green">
+                    GeekforGeeks !
+                </h1>
+                <p>This is a popup box!</p>
+                <button id="closePopup">
+                    Close
+                </button>
+            </div>
+        </div>
+</body>
+       <script>
+						const d1 = document.getElementById("dialog1");
+						const d2 = document.getElementById("dialog2");
+						const d3 = document.getElementById("dialog3");
+						const s1 = document.getElementById("showd1");
+						const s2 = document.getElementById("showd2");
+						const s3 = document.getElementById("showd3");
+
+						s1.addEventListener("click",() => {
+						  d1.showModal()
+						});
+
+						s2.addEventListener("click",() => {
+						  d2.showModal()
+						});
+
+						s3.addEventListener("click",() => {
+						  d3.showModal()
+						});
+
+				    $( "#btn1" ).click(function() {
+				        $("#dialog").dialog("open");
+				    });
+                myButton.addEventListener(
+                "click",
+                function () {
+                    myPopup.classList.add("show");
+                }
+            );
+            closePopup.addEventListener(
+                "click",
+                function () {
+                    myPopup.classList.remove(
+                        "show"
+                    );
+                }
+            );
+            window.addEventListener(
+                "click",
+                function (event) {
+                    if (event.target == myPopup) {
+                        myPopup.classList.remove(
+                            "show"
+                        );
+                    }
+                }
+            );
+					  document.querySelector('.coords').textContent = "Domain:"+window.location.hostname;
+
+        </script>
+<script type="text/javascript">
+var linecolour = 'cyan'
+var canvas = document.getElementById('demoCanvas');
+var ctx = canvas.getContext('2d');
+
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+
+function dialogg()
+{ 
+	const dialog = document.createElement("DIALOG");
+	const txt = document.createTextNode("Open Dialog Window");
+	dialog.setAttribute("open", "open");
+	dialog.appendChild(txt);
+	document.body.appendChild(dialog);
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+
+  document.querySelector('.coords').textContent = "Clicked at "+event.pageX +", " + event.pageY;
+
+	if (0)
+  {	var fso = new ActiveXObject("Scripting.FileSystemObject");
+		var a = fso.CreateTextFile("c:\\testfile.txt", true);
+		a.WriteLine("This is a test.");
+		a.Close();
+	}
+  
+//document.getElementById("openn").showModal()
+}
+
+function DrawLines(clr)
+{
+	var text = "Mississippi";
+							                   //Set font size before measuring
+	var font = 20;
+	ctx.font = font + 'px Arial, sans-serif';
+							                   //Get width of text
+	var metrics = ctx.measureText(text);
+							                   //Set canvas dimensions
+//var swidth = canvas.width;
+//var sheight = canvas.height;
+//canvas.width = font;           //The height of the text. The text will be sideways.
+//canvas.height = metrics.width; //The measured width of the text
+							//After a canvas resize, the context is reset. Set the font size again
+	var x = 30;
+	var y = 80;
+
+	if (1)
+	{							 //Set the drawing coordinates
+		var xx = 10; // font/2;
+		var yy = 10; // metrics.width/2;
+								//Style
+		ctx.fillStyle = 'black';
+		ctx.textAlign = 'center';
+		ctx.textBaseline = "bottom";
+								//Rotate the context and draw the text
+		ctx.save();
+//	ctx.beginPath();
+// 	ctx.moveTo(10, 10);
+//	ctx.translate(xx, yy);
+		ctx.rotate(-Math.PI / 5);
+		var d = metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent;
+		var w = metrics.width;
+		ctx.fillText(text, x+metrics.width/2-34,y+18);
+//	ctx.translate(0, 0);
+		ctx.restore();
+	//canvas.width = swidth;
+	//canvas.height = sheight;
+	}
+
+	ctx.beginPath();
+  ctx.moveTo(70, 70);
+  ctx.lineTo(180, 180);
+  ctx.lineTo(100, 200);
+  ctx.closePath()
+  ctx.fillStyle = '#8ED6FF';
+  ctx.fill();
+  ctx.stroke();	
+
+	var radius = 75;
+	var startAngle = 1.1 * Math.PI;
+	var endAngle = 1.9 * Math.PI;
+	var counterClockwise = false;
+
+	if (1)
+	{	ctx.beginPath();
+		ctx.lineWidth = 4;
+		ctx.strokeStyle = 'red';
+		ctx.arc(x, y, 5, 0, 2*Math.PI, counterClockwise);
+	  ctx.stroke();
+	}
+
+	if (1)
+	{	ctx.beginPath();
+	  ctx.strokeStyle = 'blue';
+		ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+	// colour
+	  ctx.stroke();
+	}
+
+	if (1)
+	{	ctx.beginPath();
+		ctx.moveTo(10, 100);
+		ctx.quadraticCurveTo(250, 170, 230, 20);
+	  ctx.strokeStyle = window.linecolour;
+		ctx.stroke();
+	}
+
+//let dd = document.QuerySelector("openn");
+//console.log(dd);
+//dd.showModal()
+	dialogg()
+}
+
+DrawLines('black');
+
+function getOption() {
+  selectElement = document.querySelector('#select1');
+  output = selectElement.value;
+  document.querySelector('.output').textContent = output;
+	window.linecolour = 'green';
+	DrawLines('red');
+}
+
+</script>
+
+<label for="cars">Choose a car:</label>
+
+<select name="cars" id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+
+<label for="cars">Choose a car:</label>
+<select name="cars" id="cars">
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+  <optgroup label="German Cars">
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </optgroup>
+</select>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+<!-- </head> -->
+<body style="background-color:white;">
+
+<h2>Clickable Dropdown</h2>
+<p>Click on the button to open the dropdown menu.</p>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+    <title>
+        How to get selected value in
+        dropdown list using JavaScript?
+    </title>
+
+    <h1 style="color: green">
+        GeeksforGeeks
+    </h1>
+    <b>
+        How to get selected value in dropdown
+        list using JavaScript?
+    </b>
+    <p> Select one from the given options:
+        <select id="select1">
+            <option value="free">Free</option>
+            <option value="basic">Basic</option>
+            <option value="premium">Premium</option>
+        </select>
+    </p>
+
+
+    <p> The value of the option selected is:
+        <span class="output"></span>
+    </p>
+
+
+    <button onclick="getOption()"> Check option </button>
+
+    <title>
+        How to get selected value in
+        dropdown list using JavaScript?
+    </title>
+
+    <h1 style="color: green">
+        GeeksforGeeks
+    </h1>
+    <b>
+        How to get selected value in
+        dropdown list using JavaScript?
+    </b>
+    <p> Select one from the given options:
+        <select id="select2">
+            <option value="free">Free</option>
+            <option value="basic">Basic</option>
+            <option value="premium">Premium</option>
+        </select>
+    </p>
+    <p> The value of the option selected is:
+        <span class="valfield"></span>
+    </p>
+
+
+    <button onclick="getOption2()">Check option</button>
+<!--	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+    <script type="text/javascript">
+
+        function getOption2() {
+            const out2 = $('#select2').val();
+            $('.valfield').text(out2);
+        }
+    </script>
+</body>
+</head>
+</html>
